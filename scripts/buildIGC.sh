@@ -81,6 +81,8 @@ echo "[Build Status] LLVM_VERSION_PREFERRED = $LLVM_VERSION_PREFERRED"
 
 echo "[Build Status] Prepare install OpenCL Clang"
 dpkg -i ./igc-official-release/*.deb
+# New shared libs have version in library name
+ln -s /usr/local/lib/libopencl-clang2.so /usr/local/lib/libopencl-clang.so
 echo "[Build Status] OpenCL Clang INSTALLED"
 
 
