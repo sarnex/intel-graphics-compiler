@@ -83,7 +83,6 @@ echo "[Build Status] Prepare install OpenCL Clang"
 dpkg -i ./igc-official-release/*.deb
 # New shared libs have version in library name
 ln -s /usr/local/lib/libopencl-clang2.so /usr/local/lib/libopencl-clang.so
-rm /usr/lib/libopencl-clang.so && ln -s /usr/local/lib/libopencl-clang2.so /usr/lib/libopencl-clang.so
 echo "[Build Status] OpenCL Clang INSTALLED"
 
 
