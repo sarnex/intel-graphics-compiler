@@ -31,13 +31,14 @@ if(UNIX)
       message(FATAL_ERROR "[IGC\\BiFModule] : Error occurred while executing readelf:  ${CCLANG_READELF_RESULT}")
     endif()
     string(REGEX MATCH "\\[${COMMON_CLANG_LIB_FULL_NAME}\\.([0-9](\\.[0-9]*)*[a-zA-Z0-9]*)\\]" CCLANG_SONAME_VERSION "${CCLANG_READELF_CALL}")
-    
+    message(STATUS "${CCLANG_READELF_CALL} ${COMMON_CLANG_LIB_FULL_NAME} ${CCLANG_SONAME_VERSION} WAT" )
+
     # Check if common clang library is newer than 5.0.0 version on which we have SPIR-V support
     if("${CCLANG_SONAME_VERSION}" VERSION_GREATER "5.0.0")
       set_property(TARGET opencl-clang-lib PROPERTY "IMPORTED_SONAME" "${COMMON_CLANG_LIB_FULL_NAME}.${CCLANG_SONAME_VERSION}")
-    elseif("${CCLANG_READELF_RESULT}" MATCHES ".*${COMMON_CLANG_LIB_FULL_NAME}2.*")
+    elseif("${CCLANG_READELF_CALL}" MATCHES ".*${COMMON_CLANG_LIB_FULL_NAME}2.*")
       message(STATUS "MATCHED")
-    else
+    else()
       message(FATAL_ERROR "[IGC\\BiFModule] : Version ${CCLANG_SONAME_VERSION} of library ${COMMON_CLANG_LIB_FULL_NAME} is below version 5.0.0 (where it's starts support of SPIR-V), please upgrade this library at least to version 5.0.0")
     endif()
   endif()
