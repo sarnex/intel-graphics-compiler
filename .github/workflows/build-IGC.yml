@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: oprypin/find-latest-tag@v1
         with:
-          repository: sarnex/intel-graphics-compiler
+          repository: intel/intel-graphics-compiler
           releases-only: true
         id: get-latest-IGC-release-tag
       - name: set initial cache key
@@ -135,7 +135,7 @@ jobs:
 #Get OpenCL Clang
       - uses: oprypin/find-latest-tag@v1
         with:
-          repository: sarnex/intel-graphics-compiler
+          repository: intel/intel-graphics-compiler
           releases-only: true
         id: get-latest-IGC-release-tag
       - name: getting OpenCL Clang from cache from the previous job
